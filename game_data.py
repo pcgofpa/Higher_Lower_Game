@@ -48,7 +48,7 @@ data = [
         'country': 'Argentina'
     },
     {
-        'name': 'Beyoncé',
+        'name': 'Beyonce',
         'follower_count': 313,
         'description': 'Musician',
         'country': 'United States'
@@ -102,7 +102,7 @@ data = [
         'country': 'United States'
     },
     {
-        'name': 'Khloé Kardashian',
+        'name': 'Khloe Kardashian',
         'follower_count': 310,
         'description': 'Reality TV personality and businesswoman',
         'country': 'United States'
@@ -318,3 +318,5 @@ data = [
         'country': 'Wales'
     }
 ]
+
+
