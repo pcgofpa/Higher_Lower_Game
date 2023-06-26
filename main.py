@@ -6,11 +6,13 @@ from game_data import data
 
 # def function to Call data for two random entries in data.
 def get_choices():
+    """Function to pull account information from data list."""
     for new_coice in data:
         choice = random.choice(data)
         return choice
 
 def compare_choices():
+    """Compare Choice 1 vs Choice 2: Return whether Choice 1 > Choice 2"""
     global choice_1, choice_2, c1_follow_greater
     c1_follow = choice_1["follower_count"]
     c2_follow = choice_2["follower_count"]
@@ -36,27 +38,31 @@ def user_guess():
         user_score += 1
         choice_1 = choice_2
         choice_2 = get_choices()
-        print(f"Correct answer, your score is now {user_score}")
-        # used for testing because was receiving a bug where if user entered 1 it seemed to always be wrong
-        # print(f"user guess was: {user_g}, Correct answer was {c1_follow_greater}") 
+        print("\033c", end="")
+        print(logo)
+        print(f"Correct answer, your score is now {user_score}")        
     elif user_g != c1_follow_greater:
         is_game_over = True
-        print(f"Incorrect, you got {user_score} correct. Good Try.")
-        # used for testing because was receiving a bug where if user entered 1 it seemed to always be wrong
-        # print(f"user guess was: {user_g}, Correct answer was {c1_follow_greater}")
+        print("\033c", end="")
+        print(logo)
+        print(f"Incorrect, you got {user_score} correct. Good Try.")        
     else:
         print("Invalid input.")
 
+def format_data(account):
+    """Format account data"""
+    account_name = account["name"]
+    account_desc = account["description"]
+    account_country = account["country"]
+    return f"{account_name}, a {account_desc}, from {account_country}"
+
 # Game Play
 def play_game():
+    """Game Play"""
     global choice_1, choice_2
-    c1_name = choice_1["name"]
-    c1_description = choice_1["description"]
-    c2_name = choice_2["name"]
-    c2_description = choice_2["description"]
-    print(f"Choice 1: {c1_name} is a {c1_description}")
+    print(f"Compare 1: {format_data(choice_1)}")
     print(vs)
-    print(f"Choice 2: {c2_name} is a {c2_description}")
+    print(f"Compare 2: {format_data(choice_2)}")
     # print(compare_choices()) used during testing
     user_guess()
 # def function to compare a vs b. return highest follower count.
@@ -66,6 +72,8 @@ user_score = 0
 is_game_over = False
 choice_1 = get_choices()
 choice_2 = get_choices()
+if choice_1 == choice_2:
+    choice_2 = get_choices()
 c1_follow_greater = False
 
 while not is_game_over:
