@@ -15,7 +15,7 @@ def compare_choices():
     c1_follow = choice_1["follower_count"]
     c2_follow = choice_2["follower_count"]
     c1_follow_greater = True
-    print(f"Choice 1 has {c1_follow} followers, Choice 2 has {c2_follow} followers.")
+    # print(f"Choice 1 has {c1_follow} followers, Choice 2 has {c2_follow} followers.") used this line during initial testing
     if c1_follow > c2_follow:
         c1_follow_greater = True
         return c1_follow_greater
@@ -49,7 +49,7 @@ def play_game():
     print(f"Choice 1: {c1_name} is a {c1_description}")
     print(vs)
     print(f"Choice 2: {c2_name} is a {c2_description}")
-    print(compare_choices())
+    # print(compare_choices()) used during testing
     user_guess()
 # def function to compare a vs b. return highest follower count.
 
