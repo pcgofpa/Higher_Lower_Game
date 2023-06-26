@@ -26,18 +26,26 @@ def compare_choices():
 # get user choice compare with compare choices
 def user_guess():
     global user_score, c1_follow_greater, choice_1, choice_2, is_game_over
-    user_guess = int(input(f"If you think choice 1 has more followers type '1' or type '2' if you think choice 2 has more followers."))
-    user_g = False
-    if user_guess == 1:
+    compare_choices()
+    user_guess = input(f"If you think choice 1 has more followers type '1' or type '2' if you think choice 2 has more followers.")
+    if user_guess == "1":
         user_g = True
+    elif user_guess == "2":
+        user_g = False
     if user_g == c1_follow_greater:
         user_score += 1
         choice_1 = choice_2
         choice_2 = get_choices()
         print(f"Correct answer, your score is now {user_score}")
-    else:
+        # used for testing because was receiving a bug where if user entered 1 it seemed to always be wrong
+        # print(f"user guess was: {user_g}, Correct answer was {c1_follow_greater}") 
+    elif user_g != c1_follow_greater:
         is_game_over = True
         print(f"Incorrect, you got {user_score} correct. Good Try.")
+        # used for testing because was receiving a bug where if user entered 1 it seemed to always be wrong
+        # print(f"user guess was: {user_g}, Correct answer was {c1_follow_greater}")
+    else:
+        print("Invalid input.")
 
 # Game Play
 def play_game():
